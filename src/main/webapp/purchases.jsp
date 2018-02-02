@@ -19,9 +19,9 @@
         <jsp:useBean id="purchases" scope="page" type="ru.fab.model.Purchase"/>
         <tr>
             <td>
-                <%--<fmt:parseDate value="${purchases.datePurchase}" pattern="y-M-dd'T'H:m" var="parsedDate"/>--%>
-                <%--<fmt:formatDate value="${parsedDate}" pattern="yyyy.MM.dd HH:mm"/>--%>
-                <%=PurchaseUtil.toString(purchases.getDatePurchase())%>
+                <fmt:parseDate value="${purchases.datePurchase}" pattern="y-M-dd'T'H:m" var="parsedDate"/>
+                <fmt:formatDate value="${parsedDate}" pattern="yyyy.MM.dd HH:mm"/>
+                <%--<%=PurchaseUtil.toString(purchases.getDatePurchase())%>--%>
             </td>
             <td>${purchases.cost}</td>
             <td>${purchases.amount}</td>

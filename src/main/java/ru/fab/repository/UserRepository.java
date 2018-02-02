@@ -3,7 +3,7 @@ package ru.fab.repository;
 
 import ru.fab.model.User;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface UserRepository {
 
@@ -15,6 +15,6 @@ public interface UserRepository {
     //null if not found
     User get(Integer id);
 
-    Collection<User> getAll();
+    List getAll();
 
 }

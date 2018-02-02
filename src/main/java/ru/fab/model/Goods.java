@@ -1,11 +1,32 @@
 package ru.fab.model;
 
+import javax.persistence.*;
+
+@NamedQueries({
+        @NamedQuery(name = Goods.DELETE, query = "DELETE FROM Goods g WHERE g.id=:id"),
+        @NamedQuery(name = Goods.ALL_SORTED, query = "SELECT g FROM Goods g ORDER BY g.name")
+})
+@Entity
+@Table(name = "goods")
 public class Goods extends AbstractEntity{
 
+    public static final String DELETE = "Goods.delete";
+    public static final String ALL_SORTED = "Goods.getAllSorted";
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "price")
     private Integer price;
+
+    @Column(name = "stock")
     private Integer stock;
+
+    public Goods(){
+    }
 
     public Goods(Integer id, String name, String description, Integer price, Integer stock) {
         super(id);

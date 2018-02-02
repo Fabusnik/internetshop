@@ -1,13 +1,14 @@
-package ru.fab.repository.jdbc;
+package ru.fab.repository.datajpa;
 
 import org.springframework.stereotype.Repository;
 import ru.fab.model.User;
 import ru.fab.repository.UserRepository;
 
-import java.util.Collection;
+import java.util.List;
 
 @Repository
-public class JdbcUserRepository implements UserRepository {
+public class DataJpaUserRepositoryImpl implements UserRepository {
+
     @Override
     public User save(User user) {
         return null;
@@ -24,7 +25,7 @@ public class JdbcUserRepository implements UserRepository {
     }
 
     @Override
-    public Collection<User> getAll() {
+    public List getAll() {
         return null;
     }
 }

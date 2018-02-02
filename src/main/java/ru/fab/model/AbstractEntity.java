@@ -1,13 +1,21 @@
 package ru.fab.model;
 
-/**
- * Created by r22fab21051979 on 29.01.2018.
- */
+
+import javax.persistence.*;
+
+@MappedSuperclass
+@Access(AccessType.FIELD)
 public abstract class AbstractEntity {
 
     public static final Integer LOGGED_USER_ID = 1;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    public AbstractEntity(){
+
+    }
 
     public AbstractEntity(Integer id) {
         this.id = id;
@@ -23,5 +31,22 @@ public abstract class AbstractEntity {
 
     public boolean isNew(){
         return this.getId() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id == null ? 0 : id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj){
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()){
+            return false;
+        }
+        AbstractEntity that = (AbstractEntity) obj;
+        return id != null && id.equals(that.id);
     }
 }
