@@ -1,6 +1,14 @@
 package ru.fab.model;
 
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @NamedQueries({
         @NamedQuery(name = Goods.DELETE, query = "DELETE FROM Goods g WHERE g.id=:id"),
@@ -8,6 +16,7 @@ import javax.persistence.*;
 })
 @Entity
 @Table(name = "goods")
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Goods extends AbstractEntity{
 
     public static final String DELETE = "Goods.delete";
