@@ -4,14 +4,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
-<head>
-    <title>Purchase</title>
-</head>
+<jsp:include page="fragments/headTag.jsp"/>
 <body>
-<h2>Purchas List</h2>
+<jsp:include page="fragments/bodyHeader.jsp"/>
+<h2>Purchase List</h2>
 <table border="1" cellpadding="8" cellspacing="0">
     <tr>
         <th>Date</th>
+        <th>Buyer</th>
+        <th>Name</th>
         <th>Cost</th>
         <th>Amount</th>
     </tr>
@@ -23,10 +24,13 @@
                 <fmt:formatDate value="${parsedDate}" pattern="yyyy.MM.dd HH:mm"/>
                 <%--<%=PurchaseUtil.toString(purchases.getDatePurchase())%>--%>
             </td>
+            <td>${purchases.user.name}</td>
+            <td>${purchases.goods.name}</td>
             <td>${purchases.cost}</td>
             <td>${purchases.amount}</td>
         </tr>
     </c:forEach>
 </table>
+<jsp:include page="fragments/footer.jsp"/>
 </body>
 </html>

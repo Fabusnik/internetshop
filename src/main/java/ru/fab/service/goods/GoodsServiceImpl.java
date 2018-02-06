@@ -25,24 +25,29 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public Goods get(Integer id) throws NotFoundException {
+        log.info("get by id {}", id);
         return repository.get(id);
     }
 
     @Override
     @CacheEvict(value = "goods", allEntries = true)
     public void delete(Integer id) throws NotFoundException{
+        log.info("delete by id {}",id);
        repository.delete(id);
     }
 
     @Override
     @CacheEvict(value = "goods", allEntries = true)
     public Goods save(Goods goods) {
+        log.info("saved {}",goods);
         return repository.save(goods);
     }
 
     @Override
     @Cacheable("goods")
     public List<Goods> getAll() {
+        log.info("getAll");
         return repository.getAll();
     }
+
 }

@@ -10,7 +10,7 @@ public abstract class AbstractEntity {
     public static final Integer LOGGED_USER_ID = 1;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     public AbstractEntity(){

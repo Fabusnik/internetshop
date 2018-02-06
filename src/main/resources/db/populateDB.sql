@@ -15,7 +15,7 @@ insert into goods(name,description, price, stock) values
   ('Кот', 'Котенок сфинкса', 1500, 1),
   ('Вода 5 л.', 'Артезианская вода', 60, 15);
 
-insert into purchase(user_id, good_id, data, amount, quantity) values
+insert into purchase(user_id, good_id, data, cost, amount) values
   (2, 2, '2018-01-20 10:00:00', 150, 3),
   (1, 4, '2018-01-20 12:00:00', 240, 4);
 

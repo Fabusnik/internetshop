@@ -14,4 +14,5 @@ public interface GoodsService {
     Goods save(Goods goods);
 
     List<Goods> getAll();
+
 }

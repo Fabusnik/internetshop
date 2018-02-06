@@ -17,7 +17,7 @@ public class DataJpaGoodsRepositoryImpl implements GoodsRepository {
 
     @Override
     public Goods get(Integer id) {
-        return repository.getOne(id);
+        return repository.findById(id).orElse(null);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class DataJpaGoodsRepositoryImpl implements GoodsRepository {
 
     @Override
     public Goods save(Goods goods) {
-        return null;
+        return repository.save(goods);
     }
 
     @Override

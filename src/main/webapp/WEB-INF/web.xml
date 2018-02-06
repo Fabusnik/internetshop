@@ -4,39 +4,49 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <display-name>Web App</display-name>
+    <display-name>Internet Shop</display-name>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:spring/spring-app.xml
+            classpath:spring/spring-db.xml
+        </param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
     
+    <!--Spring MVC-->
     <servlet>
-        <servlet-name>userServlet</servlet-name>
-        <servlet-class>ru.fab.web.UserServlet</servlet-class>
-        <load-on-startup>0</load-on-startup>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/spring-mvc.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
-
-    <servlet>
-        <servlet-name>goodsServlet</servlet-name>
-        <servlet-class>ru.fab.web.GoodsServlet</servlet-class>
-        <load-on-startup>0</load-on-startup>
-    </servlet>
-
-    <servlet>
-        <servlet-name>purchaseServlet</servlet-name>
-        <servlet-class>ru.fab.web.PurchaseServlet</servlet-class>
-        <load-on-startup>0</load-on-startup>
-    </servlet>
-
-    
     <servlet-mapping>
-        <servlet-name>userServlet</servlet-name>
-        <url-pattern>/users</url-pattern>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>goodsServlet</servlet-name>
-        <url-pattern>/goods</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>purchaseServlet</servlet-name>
-        <url-pattern>/purchases</url-pattern>
-    </servlet-mapping>
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

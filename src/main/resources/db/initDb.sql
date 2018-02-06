@@ -36,8 +36,8 @@ CREATE TABLE `playtox`.`purchase`
 `user_id` INT NOT NULL,
 `good_id` INT NOT NULL,
 `data` TIMESTAMP(0) NOT NULL,
+`cost` INT NOT NULL,
 `amount` INT NOT NULL,
-`quantity` INT NOT NULL,
   
 PRIMARY KEY (`id`),
 UNIQUE INDEX `id_UNIQUE` (`id` ASC),
@@ -47,14 +47,14 @@ INDEX `good_fk_idx` (`good_id` ASC),
 CONSTRAINT `user_fk`
     FOREIGN KEY (`user_id`)
     REFERENCES `playtox`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE ,
  
 CONSTRAINT `good_fk`
     FOREIGN KEY (`good_id`)
     REFERENCES `playtox`.`goods` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE );
 
 
 
@@ -69,7 +69,7 @@ CONSTRAINT ``
     FOREIGN KEY (`user_id`)
     REFERENCES `playtox`.`users` (`id`)
     ON DELETE CASCADE
-    ON UPDATE NO ACTION);
+    ON UPDATE CASCADE );
 
 
 

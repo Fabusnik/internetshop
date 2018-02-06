@@ -37,6 +37,10 @@ public class Goods extends AbstractEntity{
     public Goods(){
     }
 
+    public Goods(String name, String description, Integer price, Integer stock){
+        this(null,name,description,price,stock);
+    }
+
     public Goods(Integer id, String name, String description, Integer price, Integer stock) {
         super(id);
         this.name = name;

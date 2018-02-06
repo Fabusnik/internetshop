@@ -5,14 +5,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.fab.AuthorizedUser;
 import ru.fab.model.Goods;
 import ru.fab.service.goods.GoodsService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@Controller
-public class GoodsAdminRestController {
+@RestController
+@RequestMapping(value = "/rest/goods")
+public class GoodsAdminRestController extends AbstractGoodsController{
     private static final Logger log = LoggerFactory.getLogger(GoodsAdminRestController.class);
 
     private final GoodsService service;
@@ -23,24 +30,13 @@ public class GoodsAdminRestController {
     }
 
 
-    public List<Goods> getAll(){
-        log.info("getAll for user {}", AuthorizedUser.id());
-        return service.getAll();
+    @PostMapping("/buy")
+    public String buy(HttpServletRequest request){
+        String stock = request.getParameter("amount");
+        Integer goodsId = Integer.valueOf(request.getParameter("goodsId"));
+        super.buy(stock, goodsId);
+        return "redirect:/goods";
     }
 
-    public Goods get(Integer id){
-        log.info("get goods for id {}", id);
-        return service.get(id);
-    }
-
-    public void delete(Integer id){
-        log.info("delete goods by id {}", id);
-        service.delete(id);
-    }
-
-    public Goods save(Goods goods){
-        log.info("save goods {}",goods);
-        return service.save(goods);
-    }
 
 }

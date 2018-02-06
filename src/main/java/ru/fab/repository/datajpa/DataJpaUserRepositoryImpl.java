@@ -1,5 +1,6 @@
 package ru.fab.repository.datajpa;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.fab.model.User;
 import ru.fab.repository.UserRepository;
@@ -8,6 +9,9 @@ import java.util.List;
 
 @Repository
 public class DataJpaUserRepositoryImpl implements UserRepository {
+
+    @Autowired
+    private CrudUserRepository repository;
 
     @Override
     public User save(User user) {
@@ -21,11 +25,11 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
 
     @Override
     public User get(Integer id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public List getAll() {
-        return null;
+        return repository.findAll();
     }
 }

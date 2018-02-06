@@ -1,14 +1,42 @@
 package ru.fab.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "purchase")
 public class Purchase extends AbstractEntity{
 
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    //user_id
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "good_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    //good_id
     private Goods goods;
+
+    @Column(name = "data")
     private LocalDateTime datePurchase;
+
+    @Column(name = "cost")
     private Integer cost;
+
+    @Column(name = "amount")
     private Integer amount;
+
+    public Purchase(){
+    }
+
+    public Purchase(User user, Goods goods, LocalDateTime datePurchase, Integer cost, Integer amount){
+        this(null, user, goods, datePurchase, cost, amount);
+    }
 
     public Purchase(Integer id, User user, Goods goods, LocalDateTime datePurchase, Integer cost, Integer amount) {
         super(id);

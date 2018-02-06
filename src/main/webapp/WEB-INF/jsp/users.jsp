@@ -2,11 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
-<head>
-    <title>User manager</title>
-</head>
+<jsp:include page="fragments/headTag.jsp"/>
 <body>
-<h2>UserList</h2>
+<jsp:include page="fragments/bodyHeader.jsp"/>
+<h2>Use rList</h2>
 <h2>
 <a href="users?action=create">Add User</a>
 </h2>
@@ -22,10 +21,11 @@
         <tr>
             <td>${user.name}</td>
             <td>${user.roles}</td>
-            <td><a href="users?action=update&id=${user.id}">Edit</a></td>
-            <td><a href="users?action=delete&id=${user.id}">Delete</a></td>
+            <td><a href="users/update?id=${user.id}">Edit</a></td>
+            <td><a href="users/delete?id=${user.id}">Delete</a></td>
         </tr>
     </c:forEach>
 </table>
+<jsp:include page="fragments/footer.jsp"/>
 </body>
 </html>
