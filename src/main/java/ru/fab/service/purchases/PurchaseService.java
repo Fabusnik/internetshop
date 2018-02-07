@@ -14,4 +14,6 @@ public interface PurchaseService {
     Purchase save(Purchase goods);
 
     List<Purchase> getAll();
+
+
 }

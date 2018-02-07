@@ -2,6 +2,7 @@ package ru.fab.repository.datajpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.fab.model.Purchase;
 import ru.fab.repository.PurchaseRepository;
 
@@ -24,6 +25,7 @@ public class DataJpaPurchaseRepositoryImpl implements PurchaseRepository {
     }
 
     @Override
+    @Transactional
     public Purchase save(Purchase purchase) {
         return repository.save(purchase);
     }

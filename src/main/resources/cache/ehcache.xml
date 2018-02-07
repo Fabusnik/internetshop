@@ -21,5 +21,5 @@
         <heap>5000</heap>
     </cache-template>
 
-    <cache alias="goods" uses-template="nonExpiryCache"/>
+    <!--<cache alias="goods" uses-template="nonExpiryCache"/>-->
 </config>

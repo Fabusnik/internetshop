@@ -16,7 +16,7 @@ import javax.persistence.Table;
 })
 @Entity
 @Table(name = "goods")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+//@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Goods extends AbstractEntity{
 
     public static final String DELETE = "Goods.delete";

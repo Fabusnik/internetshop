@@ -15,4 +15,6 @@ public interface GoodsService {
 
     List<Goods> getAll();
 
+    void buy(Integer amount, Integer goodsId);
+
 }

@@ -2,6 +2,7 @@ package ru.fab.repository.datajpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.fab.model.User;
 import ru.fab.repository.UserRepository;
 
@@ -14,6 +15,7 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
     private CrudUserRepository repository;
 
     @Override
+    @Transactional
     public User save(User user) {
         return null;
     }

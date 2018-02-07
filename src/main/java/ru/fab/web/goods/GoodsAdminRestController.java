@@ -32,9 +32,9 @@ public class GoodsAdminRestController extends AbstractGoodsController{
 
     @PostMapping("/buy")
     public String buy(HttpServletRequest request){
-        String stock = request.getParameter("amount");
+        Integer amount = Integer.valueOf(request.getParameter("amount"));
         Integer goodsId = Integer.valueOf(request.getParameter("goodsId"));
-        super.buy(stock, goodsId);
+        super.buy(amount, goodsId);
         return "redirect:/goods";
     }
 

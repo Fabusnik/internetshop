@@ -3,6 +3,7 @@ package ru.fab.repository.datajpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.fab.model.Goods;
 import ru.fab.repository.GoodsRepository;
 
@@ -26,6 +27,7 @@ public class DataJpaGoodsRepositoryImpl implements GoodsRepository {
     }
 
     @Override
+    @Transactional
     public Goods save(Goods goods) {
         return repository.save(goods);
     }
