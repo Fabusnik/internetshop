@@ -5,9 +5,9 @@
 <jsp:include page="fragments/headTag.jsp"/>
 <body>
 <jsp:include page="fragments/bodyHeader.jsp"/>
-<h2>Use rList</h2>
+<h2>User List</h2>
 <h2>
-<a href="users?action=create">Add User</a>
+<a href="users/create">Add User</a>
 </h2>
 <table border="1" cellpadding="8" cellspacing="0">
     <tr>

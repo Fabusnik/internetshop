@@ -17,4 +17,6 @@ public interface UserRepository {
 
     List getAll();
 
+    User getByName(String name);
+
 }

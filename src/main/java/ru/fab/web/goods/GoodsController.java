@@ -39,19 +39,19 @@ public class GoodsController extends AbstractGoodsController{
     }
 
 
-    @GetMapping("/delete")
+    @GetMapping("/admin/delete")
     public String delete(HttpServletRequest request){
         super.delete(getId(request));
         return "redirect:/goods";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/admin/create")
     public String create(Model model) {
         model.addAttribute("goods", new Goods("", "", 0, 0));
         return "goodsEdit";
     }
 
-    @GetMapping("/update")
+    @GetMapping("/admin/update")
     public String update(HttpServletRequest request, Model model) {
         model.addAttribute("goods", super.get(getId(request)));
         return "goodsEdit";

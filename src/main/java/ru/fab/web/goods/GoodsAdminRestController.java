@@ -17,8 +17,8 @@ import ru.fab.service.goods.GoodsService;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@RestController
-@RequestMapping(value = "/rest/goods")
+//@RestController
+//@RequestMapping(value = "/rest/goods")
 public class GoodsAdminRestController extends AbstractGoodsController{
     private static final Logger log = LoggerFactory.getLogger(GoodsAdminRestController.class);
 
@@ -30,13 +30,13 @@ public class GoodsAdminRestController extends AbstractGoodsController{
     }
 
 
-    @PostMapping("/buy")
-    public String buy(HttpServletRequest request){
-        Integer amount = Integer.valueOf(request.getParameter("amount"));
-        Integer goodsId = Integer.valueOf(request.getParameter("goodsId"));
-        super.buy(amount, goodsId);
-        return "redirect:/goods";
-    }
+//    @PostMapping("/buy")
+//    public String buy(HttpServletRequest request){
+//        Integer amount = Integer.valueOf(request.getParameter("amount"));
+//        Integer goodsId = Integer.valueOf(request.getParameter("goodsId"));
+//        super.buy(amount, goodsId);
+//        return "redirect:/goods";
+//    }
 
 
 }

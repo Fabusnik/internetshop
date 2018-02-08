@@ -17,12 +17,12 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
     @Override
     @Transactional
     public User save(User user) {
-        return null;
+        return repository.save(user);
     }
 
     @Override
     public boolean delete(Integer id) {
-        return false;
+        return repository.delete(id) != 0;
     }
 
     @Override
@@ -33,5 +33,10 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
     @Override
     public List getAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public User getByName(String name) {
+        return repository.findByName(name);
     }
 }
