@@ -6,11 +6,12 @@
 <jsp:include page="fragments/bodyHeader.jsp"/>
 <section>
     <h2><a href="/shop">Home</a></h2>
-    <h3>Edit user</h3>
+    <h3>code = ${register ? "Edit user" : "Register"}</h3>
     <hr>
     <jsp:useBean id="user" scope="request" type="ru.fab.model.User"/>
-    <form method="post" action="users">
+    <form method="post" action="register">
         <input type="hidden" name="id" value="${user.id}">
+        <input type="hidden" name="role" value="${user.roles}">
         <dl>
             <dt>Name:</dt>
             <dd><input type="text" value="${user.name}" name="name"></dd>

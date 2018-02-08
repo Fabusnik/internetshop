@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.fab.model.Goods;
 import ru.fab.service.goods.GoodsService;
+import ru.fab.util.GoodsUtil;
 
 import java.util.List;
 
@@ -21,12 +22,12 @@ public abstract class AbstractGoodsController {
     }
 
     public Goods get(Integer id) {
-        log.info("get {}", id);
+        log.info("get goods by {}",  id);
         return goodsService.get(id);
     }
 
     public void delete(Integer id) {
-        log.info("delete {}", id);
+        log.info("delete goods {} by {}", id, goodsService.get(id));
         goodsService.delete(id);
     }
 

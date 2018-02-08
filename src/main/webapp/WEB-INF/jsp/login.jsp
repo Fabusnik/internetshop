@@ -4,7 +4,9 @@
 <jsp:include page="fragments/headTag.jsp"/>
 <body>
 <jsp:include page="fragments/bodyHeader.jsp"/>
-
+<h2>
+    <a href="register">Registered</a>
+</h2>
 <%--<form action="<c:url value="/j_spring_security_check" />" method="post">--%>
 <form action="spring_security_check" method="post">
     <dl>
