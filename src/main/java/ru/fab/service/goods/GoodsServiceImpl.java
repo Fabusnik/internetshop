@@ -1,6 +1,10 @@
 package ru.fab.service.goods;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import ru.fab.AuthorizedUser;
 import ru.fab.model.Goods;
@@ -15,6 +19,8 @@ import java.util.List;
 
 @Service
 public class GoodsServiceImpl implements GoodsService {
+
+    private static final Logger log = LoggerFactory.getLogger(GoodsServiceImpl.class);
 
 
     private final GoodsRepository goodsRepository;
@@ -55,6 +61,7 @@ public class GoodsServiceImpl implements GoodsService {
     public void buy(Integer amount, Integer goodsId) {
         Goods goods = goodsRepository.get(goodsId);
         if (goods.getStock() - amount >= 0) {
+            log.info("create Purchase idGoods {} stock {}", goodsId, amount);
 
             goods.setStock(goods.getStock() - amount);
             goodsRepository.save(goods);
@@ -62,7 +69,11 @@ public class GoodsServiceImpl implements GoodsService {
                     userRepository.get(AuthorizedUser.id()),
                     goodsRepository.get(goodsId),
                     LocalDateTime.now(),
-                    (goodsRepository.get(goodsId).getPrice() * Integer.valueOf(amount)), Integer.valueOf(amount)));
+                    (goodsRepository.get(goodsId).getPrice() * amount),
+                    amount));
+        } else
+        {
+            log.info("not enough in stock");
         }
     }
 

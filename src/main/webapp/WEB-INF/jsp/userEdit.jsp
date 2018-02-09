@@ -6,7 +6,7 @@
 <jsp:include page="fragments/bodyHeader.jsp"/>
 <section>
     <h2><a href="/shop">Home</a></h2>
-    <h3>code = ${register ? "Edit user" : "Register"}</h3>
+    <h3>${register ? "Register" : "Edit user"}</h3>
     <hr>
     <jsp:useBean id="user" scope="request" type="ru.fab.model.User"/>
     <form method="post" action="register">

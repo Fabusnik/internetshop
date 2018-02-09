@@ -42,7 +42,6 @@ public abstract class AbstractGoodsController {
     }
 
     public void buy(Integer amount, Integer goodsId) {
-        log.info("create Purchase idGoods {} stock {}", goodsId, amount);
         goodsService.buy(amount, goodsId);
     }
 }
