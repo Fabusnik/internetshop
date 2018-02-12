@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 import ru.fab.AuthorizedUser;
 import ru.fab.model.User;
 import ru.fab.repository.UserRepository;
@@ -12,6 +13,8 @@ import ru.fab.service.users.UserService;
 import ru.fab.util.exception.NotFoundException;
 
 import java.util.List;
+
+import static ru.fab.util.ValidationUtil.checkNotFoundWithId;
 
 @Service("userService")
 public class UserServiceImpl implements UserService, UserDetailsService {
@@ -25,12 +28,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public User create(User user) {
+        Assert.notNull(user, "user must not be null");
         return repository.save(user);
     }
 
     @Override
     public void delete(int id) throws NotFoundException {
-        repository.delete(id);
+        checkNotFoundWithId(repository.delete(id), id);
     }
 
     @Override
@@ -40,7 +44,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public void update(User user) {
-        repository.save(user);
+        Assert.notNull(user, "user must not be null");
+        checkNotFoundWithId(repository.save(user), user.getId());
     }
 
     @Override

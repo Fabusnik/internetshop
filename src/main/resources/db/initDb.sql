@@ -11,7 +11,6 @@ CREATE TABLE `playtox`.`users`
 `id` INT NOT NULL AUTO_INCREMENT,
 `name` VARCHAR(45) NOT NULL,
 `password` VARCHAR(45) NOT NULL,
-`registered` TIMESTAMP(0) NOT NULL,
   
 PRIMARY KEY (`id`),
 UNIQUE INDEX `id_UNIQUE` (`id` ASC),

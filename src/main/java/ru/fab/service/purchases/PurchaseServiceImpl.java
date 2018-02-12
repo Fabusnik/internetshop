@@ -6,7 +6,10 @@ import ru.fab.model.Purchase;
 import ru.fab.repository.PurchaseRepository;
 import ru.fab.util.exception.NotFoundException;
 
+import javax.transaction.NotSupportedException;
 import java.util.List;
+
+import static ru.fab.util.ValidationUtil.checkNotFoundWithId;
 
 @Service
 public class PurchaseServiceImpl implements PurchaseService {
@@ -16,7 +19,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     @Override
     public Purchase get(Integer id) throws NotFoundException {
-        return null;
+        return repository.get(id);
     }
 
     @Override

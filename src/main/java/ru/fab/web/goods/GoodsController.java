@@ -3,6 +3,7 @@ package ru.fab.web.goods;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.fab.AuthorizedUser;
 import ru.fab.model.Goods;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ public class GoodsController extends AbstractGoodsController{
     public String buy(HttpServletRequest request){
         Integer amount = Integer.valueOf(request.getParameter("amount"));
         Integer goodsId = Integer.valueOf(request.getParameter("goodsId"));
-        super.buy(amount, goodsId);
+        super.buy(amount, goodsId, AuthorizedUser.id());
         return "redirect:/goods";
     }
 

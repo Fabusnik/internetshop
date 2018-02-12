@@ -41,7 +41,7 @@ public abstract class AbstractGoodsController {
         goodsService.save(goods);
     }
 
-    public void buy(Integer amount, Integer goodsId) {
-        goodsService.buy(amount, goodsId);
+    public void buy(Integer amount, Integer goodsId, int id) {
+        goodsService.buy(amount, goodsId, id);
     }
 }

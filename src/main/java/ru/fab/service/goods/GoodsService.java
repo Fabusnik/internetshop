@@ -7,14 +7,14 @@ import java.util.List;
 
 
 public interface GoodsService {
-    Goods get(Integer id) throws NotFoundException;
+    Goods get(int id) throws NotFoundException;
 
-    void delete(Integer id) throws NotFoundException;
+    void delete(int id) throws NotFoundException;
 
     Goods save(Goods goods);
 
     List<Goods> getAll();
 
-    void buy(Integer amount, Integer goodsId);
+    void buy(Integer amount, Integer goodsId, int id);
 
 }
