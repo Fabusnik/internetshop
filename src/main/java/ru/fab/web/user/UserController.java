@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.fab.model.Role;
 import ru.fab.model.User;
 
@@ -20,22 +21,21 @@ public class UserController extends AbstractUserController {
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("user", new User("", "",  Role.ROLE_USER));
+        model.addAttribute("user", new User("", "", Role.ROLE_USER));
         return "userEdit";
     }
 
     @GetMapping("/update")
-    public String update(HttpServletRequest request, Model model) {
-        model.addAttribute("user", super.get(getId(request)));
+    public String update(@RequestParam("id") int id, Model model) {
+        model.addAttribute("user", super.get(id));
         return "userEdit";
     }
 
     @GetMapping("/delete")
-    public String delete(HttpServletRequest request){
-        super.delete(getId(request));
+    public String delete(@RequestParam("id") int id) {
+        super.delete(id);
         return "redirect:/users";
     }
-
 
 
     @PostMapping
@@ -53,7 +53,6 @@ public class UserController extends AbstractUserController {
         }
         return "redirect:/users";
     }
-
 
 
     private int getId(HttpServletRequest request) {

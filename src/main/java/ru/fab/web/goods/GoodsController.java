@@ -2,38 +2,37 @@ package ru.fab.web.goods;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.fab.AuthorizedUser;
 import ru.fab.model.Goods;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.Objects;
 
 @Controller
 @RequestMapping(value = "/goods")
-public class GoodsController extends AbstractGoodsController{
+public class GoodsController extends AbstractGoodsController {
 
 
     @PostMapping("/buy")
-    public String buy(HttpServletRequest request){
-        Integer amount = Integer.valueOf(request.getParameter("amount"));
-        Integer goodsId = Integer.valueOf(request.getParameter("goodsId"));
+    public String buy(@RequestParam("amount") Integer amount,
+                      @RequestParam("goodsId") Integer goodsId) {
         super.buy(amount, goodsId, AuthorizedUser.id());
         return "redirect:/goods";
     }
 
+
     @PostMapping
-    public String updateOrCreate(HttpServletRequest request) {
-        Goods goods = new Goods(request.getParameter("name"),
-                request.getParameter("description"),
-                Integer.valueOf(request.getParameter("price")),
-                Integer.valueOf(request.getParameter("stock")));
+    public String updateOrCreate(@Valid Goods goods, BindingResult result) {
+        if (result.hasErrors()){
+            return "goodsEdit";
+        }
 
-
-        if (request.getParameter("id").isEmpty()) {
+        if (goods.getId() == null) {
             super.create(goods);
         } else {
-            goods.setId(getId(request));
             super.update(goods);
         }
         return "redirect:/goods";
@@ -41,8 +40,8 @@ public class GoodsController extends AbstractGoodsController{
 
 
     @GetMapping("/admin/delete")
-    public String delete(HttpServletRequest request){
-        super.delete(getId(request));
+    public String delete(@RequestParam("id") int id) {
+        super.delete(id);
         return "redirect:/goods";
     }
 
@@ -53,19 +52,8 @@ public class GoodsController extends AbstractGoodsController{
     }
 
     @GetMapping("/admin/update")
-    public String update(HttpServletRequest request, Model model) {
-        model.addAttribute("goods", super.get(getId(request)));
+    public String update(@RequestParam("id") int id, Model model) {
+        model.addAttribute("goods", super.get(id));
         return "goodsEdit";
     }
-
-    private int getId(HttpServletRequest request) {
-        String paramId = Objects.requireNonNull(request.getParameter("id"));
-        return Integer.valueOf(paramId);
-    }
-
-
-
-
-
-
 }

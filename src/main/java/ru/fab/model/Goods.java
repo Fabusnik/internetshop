@@ -3,12 +3,16 @@ package ru.fab.model;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @NamedQueries({
         @NamedQuery(name = Goods.DELETE, query = "DELETE FROM Goods g WHERE g.id=:id"),
@@ -23,15 +27,18 @@ public class Goods extends AbstractEntity{
     public static final String ALL_SORTED = "Goods.getAllSorted";
 
     @Column(name = "name")
+    @NotBlank
     private String name;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "price")
+    @Min(value = 0)
     private Integer price;
 
     @Column(name = "stock")
+    @Min(value = 0)
     private Integer stock;
 
     public Goods(){

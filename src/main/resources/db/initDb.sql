@@ -22,7 +22,7 @@ CREATE TABLE `playtox`.`goods`
 `id` INT NOT NULL AUTO_INCREMENT,
 `name` VARCHAR(45) NOT NULL,
 `description` VARCHAR(255) NOT NULL,
-`price` FLOAT NOT NULL,
+`price` INT NOT NULL,
 `stock` INT NOT NULL,
   
 PRIMARY KEY (`id`),

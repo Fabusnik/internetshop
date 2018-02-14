@@ -9,7 +9,6 @@ import org.springframework.util.Assert;
 import ru.fab.AuthorizedUser;
 import ru.fab.model.User;
 import ru.fab.repository.UserRepository;
-import ru.fab.service.users.UserService;
 import ru.fab.util.exception.NotFoundException;
 
 import java.util.List;
@@ -57,7 +56,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User u = repository.getByName(username.toLowerCase());
         if (u == null) {
-            throw new UsernameNotFoundException("User "+ username + " is not found");
+            throw new UsernameNotFoundException("User " + username + " is not found");
         }
         return new AuthorizedUser(u);
     }

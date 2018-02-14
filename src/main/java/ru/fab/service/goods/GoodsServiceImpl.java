@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import ru.fab.AuthorizedUser;
 import ru.fab.model.Goods;
 import ru.fab.model.Purchase;
 import ru.fab.repository.GoodsRepository;
