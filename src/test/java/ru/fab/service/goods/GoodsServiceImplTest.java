@@ -52,7 +52,7 @@ public class GoodsServiceImplTest {
     @Test
     public void deleteNotFound() throws Exception{
         thrown.expect(NotFoundException.class);
-        service.delete(3);
+        service.delete(31);
     }
 
     @Test

@@ -35,7 +35,6 @@
         </dl>
         <button type="submit">Save</button>
         <button onclick="window.history.back()">Cancel</button>
-        </table>
     </form:form>
 </section>
 

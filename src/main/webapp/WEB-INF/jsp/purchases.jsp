@@ -1,5 +1,3 @@
-<%@ page import="ru.fab.model.Purchase" %>
-<%@ page import="ru.fab.util.PurchaseUtil" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -12,7 +10,7 @@
     <tr>
         <th>Date</th>
         <th>Buyer</th>
-        <th>Name</th>
+        <th>Name goods</th>
         <th>Cost</th>
         <th>Amount</th>
     </tr>
