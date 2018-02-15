@@ -3,6 +3,9 @@ package ru.fab.util;
 
 import ru.fab.util.exception.NotFoundException;
 
+/**
+ * Check NotFound
+ */
 public class ValidationUtil {
 
     private ValidationUtil(){
