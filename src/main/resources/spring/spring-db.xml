@@ -64,11 +64,16 @@
     <beans profile="mysql">
         <context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>
         <bean id="dataSource"
-              class="org.apache.tomcat.jdbc.pool.DataSource"
+              class="org.apache.commons.dbcp.BasicDataSource"
               p:driverClassName="com.mysql.jdbc.Driver"
               p:url="${database.url}"
               p:username="${database.username}"
-              p:password="${database.password}"/>
+              p:password="${database.password}"
+              p:initialSize="50"
+              p:maxActive="100"
+              p:maxIdle="20"
+              p:minIdle="4"
+              p:maxWait="1000"/>
     </beans>
 
 
