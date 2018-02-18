@@ -9,6 +9,7 @@ import ru.fab.repository.PurchaseRepository;
 import java.util.List;
 
 @Repository
+@Transactional(readOnly = true)
 public class DataJpaPurchaseRepositoryImpl implements PurchaseRepository {
 
     @Autowired

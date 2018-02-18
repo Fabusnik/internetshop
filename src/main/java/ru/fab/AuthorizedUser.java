@@ -13,7 +13,6 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
 
     public AuthorizedUser(User user) {
         super(user.getName(), user.getPassword(), true,true, true, true, user.getRoles());
-//        this.user = new User(user);
         this.user = user;
 
     }
@@ -36,10 +35,6 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
     public static int id() {
         return get().user.getId();
     }
-
-//    public static void setId(int id) {
-//        AuthorizedUser.id = id;
-//    }
 
 
     @Override

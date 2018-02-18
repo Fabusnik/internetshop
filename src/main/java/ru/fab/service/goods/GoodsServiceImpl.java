@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import ru.fab.model.Goods;
 import ru.fab.model.Purchase;
@@ -60,10 +61,10 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    @Transactional
     public void buy(Integer amount, Integer goodsId, int id) {
         Goods goods = checkNotFoundWithId(goodsRepository.get(goodsId), goodsId);
         if (goods.getStock() - amount >= 0) {
-            log.info("create Purchase idGoods {} stock {}", goodsId, amount);
             goods.setStock(goods.getStock() - amount);
             goodsRepository.save(goods);
             purchaseRepository.save(new Purchase(
@@ -72,6 +73,7 @@ public class GoodsServiceImpl implements GoodsService {
                     LocalDateTime.now(),
                     (goodsRepository.get(goodsId).getPrice() * amount),
                     amount));
+            log.info("create Purchase idGoods {} stock {}", goodsId, amount);
         } else
         {
             log.info("not enough goods in stock");

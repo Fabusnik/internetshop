@@ -5,8 +5,8 @@
     <jmxConfigurator/>
 
     <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <file>D:/Projects/internetshop/log/shop.log</file>
         <!--<file>${SHOP_ROOT}/log/shop.log</file>-->
-        <file>${SHOP_ROOT}/log/shop.log</file>
 
         <encoder>
             <charset>UTF-8</charset>

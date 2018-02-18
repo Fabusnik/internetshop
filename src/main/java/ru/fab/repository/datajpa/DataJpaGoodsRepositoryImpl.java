@@ -10,6 +10,7 @@ import ru.fab.repository.GoodsRepository;
 import java.util.List;
 
 @Repository
+@Transactional(readOnly = true)
 public class DataJpaGoodsRepositoryImpl implements GoodsRepository {
     private static final Sort SORT_BY_PRICE = new Sort(Sort.Direction.ASC,"name");
 
